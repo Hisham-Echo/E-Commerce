@@ -1,18 +1,7 @@
 <template>
     <h1>Shopping Cart</h1>
     <div v-if="cartItems.length > 0">
-        <div
-            class="product-container"
-            v-for="product in cartItems"
-            :key="product.id"
-        >
-            <img :src="product.imageName" alt="" class="product-image" />
-            <div class="details-wrap">
-                <h3>{{ product.name }}</h3>
-                <p>{{ product.price }}</p>
-            </div>
-            <button class="remove-button">Remove from Cart</button>
-        </div>
+        <CartList :products="cartItems" />
         <button class="checkout-button">Proceed to Checkout</button>
     </div>
     <div v-if="cartItems === 0">
@@ -22,8 +11,11 @@
 
 <script>
 import { cartItems } from "../temp-data";
+import CartList from "../components/CartList.vue";
+
 export default {
     name: "ShoppingCartPage",
+    components: { CartList },
     data() {
         return {
             cartItems,
