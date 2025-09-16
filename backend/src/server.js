@@ -4,7 +4,7 @@ import path from "path";
 
 async function start() {
     // connect to db
-    const url = `mongodb+srv://ecommerce-db:<db-pass>@cluster0.eufv08p.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
+    const url = `mongodb+srv://ecommerce-db:wWxN8iiZqqVk8hhs@cluster0.eufv08p.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
     const client = new MongoClient(url);
 
     await client.connect();
@@ -44,7 +44,7 @@ async function start() {
     });
 
     // add items
-    app.post("/api/user/:userId/cart", async (req, res) => {
+    app.post("/api/users/:userId/cart", async (req, res) => {
         const userId = req.params.userId;
         const productId = req.body.id;
 
@@ -58,7 +58,7 @@ async function start() {
     });
 
     // delete items
-    app.delete("/api/user/:userId/cart/:productId", async (req, res) => {
+    app.delete("/api/users/:userId/cart/:productId", async (req, res) => {
         const userId = req.params.userId;
         const productId = req.params.productId;
 
