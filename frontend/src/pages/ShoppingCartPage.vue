@@ -10,7 +10,8 @@
 </template>
 
 <script>
-import { cartItems } from "../temp-data";
+import axios from "axios";
+// import { cartItems } from "../temp-data";
 import CartList from "../components/CartList.vue";
 
 export default {
@@ -18,8 +19,13 @@ export default {
     components: { CartList },
     data() {
         return {
-            cartItems,
+            cartItems: [],
         };
+    },
+    async created() {
+        const response = await axios.get(`/api/users/12345/cart`);
+        const cartItems = response.data;
+        this.cartItems = cartItems;
     },
 };
 </script>

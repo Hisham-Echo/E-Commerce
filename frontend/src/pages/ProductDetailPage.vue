@@ -15,7 +15,8 @@
 </template>
 
 <script>
-import { products } from "../temp-data";
+import axios from "axios";
+// import { products } from "../temp-data";
 import NotFoundPage from "./NotFoundPage.vue";
 
 export default {
@@ -23,10 +24,15 @@ export default {
     components: { NotFoundPage },
     data() {
         return {
-            product: products.find(
-                (p) => p.id === this.$route.params.productId
-            ),
+            product: {},
         };
+    },
+    async created() {
+        const response = await axios.get(
+            `/api/products/${this.$route.params.productId}`
+        );
+        const product = response.data;
+        this.product = product;
     },
 };
 </script>
