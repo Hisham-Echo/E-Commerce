@@ -31,7 +31,7 @@ createApp(App)
         VueRouter.createRouter({
             history: VueRouter.createWebHistory(process.env.BASE_URL),
             routes: [
-                { path: "/", component: App },
+                { path: "/", redirect: "/products" },
                 { path: "/cart", component: ShoppingCartPage },
                 { path: "/products", component: ProductsPage },
                 { path: "/products/:productId", component: ProductDetailPage },
